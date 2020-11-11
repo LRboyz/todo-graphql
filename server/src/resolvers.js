@@ -21,31 +21,29 @@ const resolvers = {
         isCompleted: false,
         createdAt: new Date().toLocaleString(),
       })
-      return 'Create Todo Success'
+      return todolist
     },
     deleteTodo: (obj, args) => {
-      const result = todolist.map((item, index) => {
+      todolist.map((item, index) => {
         if (item.id == args.id) {
           todolist.splice(index, 1)
         }
       })
-      return 'Delete Success'
+      return null
     },
     completeTodo: (obj, args) => {
-      const result = todolist.map((item) => {
-        if (item.id == args.id) {
-          item.isCompleted = true
-        }
+      let result = todolist.find((item) => {
+        return item.id == args.id
       })
-      return 'is completed'
+      result.isCompleted = true
+      return result
     },
     uncompleteTodo: (obj, args) => {
-      const result = todolist.map((item) => {
-        if (item.id == args.id) {
-          item.isCompleted = false
-        }
+      let result = todolist.find((item) => {
+        return item.id == args.id
       })
-      return 'is uncompleted'
+      result.isCompleted = false
+      return result
     },
   },
 }

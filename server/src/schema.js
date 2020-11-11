@@ -15,8 +15,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createTodo(content: String): Todo
-    deleteTodo(id: Int): Todo
+    createTodo(content: String): [Todo]
+    deleteTodo(id: Int): [Todo]
     completeTodo(id: Int): Todo
     uncompleteTodo(id: Int): Todo
   }
